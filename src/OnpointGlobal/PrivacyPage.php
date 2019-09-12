@@ -18,6 +18,8 @@ class PrivacyPage
      */
     public function __construct() {
         add_action('admin_init', array( $this, 'privacy_page_creation' ));
+        //Shortcode Date creator
+        add_action('privacy_current_day', array( $this, 'privacy_current_day' ));
     }
     /**
      * Creates privacy policy, terms of use and marketing partners
@@ -212,4 +214,22 @@ class PrivacyPage
         ob_end_clean();
         return $content;
     }
+
+    /**
+     * Returns the current date
+     * @since 2.0.0
+     * @param Array $att
+     * @return String
+     */
+    function privacy_current_day( $atts )
+    {
+        $attributes = shortcode_atts(
+            [
+                'format' => 'F jS, Y'
+            ],
+            $atts
+        );
+        return Date( $attributes['format'] );
+    }
+
 }
