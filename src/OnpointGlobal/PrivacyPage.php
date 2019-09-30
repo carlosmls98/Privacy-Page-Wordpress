@@ -19,7 +19,7 @@ class PrivacyPage
     public function __construct() {
         add_action('admin_init', array( $this, 'privacy_page_creation' ));
         //Shortcode Date creator
-        add_action('privacy_current_day', array( $this, 'privacy_current_day' ));
+        add_shortcode('privacy_current_day', array( $this, 'privacy_current_day' ));
     }
     /**
      * Creates privacy policy, terms of use and marketing partners
